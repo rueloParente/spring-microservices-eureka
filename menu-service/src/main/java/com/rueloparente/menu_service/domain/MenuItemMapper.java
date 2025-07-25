@@ -5,7 +5,7 @@ import com.rueloparente.menu_service.dto.MenuItemWeb;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", implementationName = "MenuItemMapperImpl")
+@Mapper(componentModel = "spring")
 interface MenuItemMapper {
 
     /**

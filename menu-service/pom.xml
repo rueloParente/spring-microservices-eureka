@@ -19,6 +19,7 @@
 		<springdoc-openapi.version>2.8.9</springdoc-openapi.version>
 		<spotless-maven-plugin.version>2.46.1</spotless-maven-plugin.version>
 		<lombok.version>1.18.38</lombok.version>
+		<mapstruct.version>1.6.3</mapstruct.version>
 		<spring-cloud.version>2025.0.0</spring-cloud.version>
 		<dockerImageName>rueloparentedev/restaurant-${project.artifactId}</dockerImageName>
 	</properties>
@@ -82,7 +83,7 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>1.6.3</version>
+			<version>${mapstruct.version}</version>
 		</dependency>
 
 		<!-- Testing -->
@@ -135,7 +136,12 @@
 				<path>
 					<groupId>org.projectlombok</groupId>
 					<artifactId>lombok</artifactId>
-				 </path>
+				</path>
+				<path>
+						<groupId>org.mapstruct</groupId>
+						<artifactId>mapstruct-processor</artifactId>
+					<version>${mapstruct.version}</version>
+				</path>
 			</annotationProcessorPaths>
 			</configuration>
 			</plugin>
