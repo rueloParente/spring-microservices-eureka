@@ -9,21 +9,14 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mapstruct.factory.Mappers;
 
 /**
  * Unit tests for the {@link MenuItemMapper}.
  * This class leverages Spring's testing support to inject the mapper instance.
  */
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = {MenuItemMapperImpl.class})
 class MenuItemMapperTest {
-
-    @Autowired
-    private MenuItemMapper menuItemMapper;
+    private final MenuItemMapper menuItemMapper = Mappers.getMapper(MenuItemMapper.class);
 
     private AddMenuItem addMenuItemDto;
     private MenuItem menuItemEntity;

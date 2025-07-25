@@ -1,6 +1,7 @@
 -- This script is used to populate the 'menu' table with sample data for testing and development.
 -- The 'id' is managed by the 'menu_id_seq' sequence, so it's not specified here.
 -- 'created_at', 'updated_at', and 'version' have default values or are managed by JPA/Hibernate.
+truncate table menu;
 
 -- Inserting a variety of menu items
 INSERT INTO menu (code, name, description, price, available, current_stock, created_at, updated_at, version)

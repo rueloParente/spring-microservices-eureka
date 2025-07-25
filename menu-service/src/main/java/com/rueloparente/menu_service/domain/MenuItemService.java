@@ -61,11 +61,7 @@ public class MenuItemService {
                 .findByCode(code)
                 .orElseThrow(() -> new ResourceNotFoundException("MenuItem with code " + code + " not found"));
 
-        menuItem.setName(updateMenuItem.name());
-        menuItem.setDescription(updateMenuItem.description());
-        menuItem.setCurrentStock(updateMenuItem.currentStock());
-        menuItem.setPrice(updateMenuItem.price());
-        menuItem.setAvailable(updateMenuItem.available());
+        menuItemMapper.updateMenuItem(updateMenuItem, menuItem);
 
         MenuItem updatedMenuItem = menuItemRepository.save(menuItem);
         return menuItemMapper.toWeb(updatedMenuItem);

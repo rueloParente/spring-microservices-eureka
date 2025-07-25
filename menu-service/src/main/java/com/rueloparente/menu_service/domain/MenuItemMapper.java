@@ -2,8 +2,12 @@ package com.rueloparente.menu_service.domain;
 
 import com.rueloparente.menu_service.dto.AddMenuItem;
 import com.rueloparente.menu_service.dto.MenuItemWeb;
+import com.rueloparente.menu_service.dto.UpdateMenuItem;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring")
 interface MenuItemMapper {
@@ -31,4 +35,15 @@ interface MenuItemMapper {
      * @return The mapped MenuItemWeb DTO.
      */
     MenuItemWeb toWeb(MenuItem entity);
+
+    /**
+     * Updates an existing MenuItem entity from a DTO.
+     * The NullValuePropertyMappingStrategy.IGNORE ensures that any null fields
+     * in the DTO are not applied to the entity, enabling partial updates.
+     *
+     * @param dto The source DTO with update data.
+     * @param entity The target entity to be updated.
+     */
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateMenuItem(UpdateMenuItem dto, @MappingTarget MenuItem entity);
 }

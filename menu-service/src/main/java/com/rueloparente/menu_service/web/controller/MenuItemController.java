@@ -34,9 +34,9 @@ public class MenuItemController {
         MenuItemWeb createdItem = menuItemService.addMenuItem(addMenuItem);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                                                  .path("/{code}")
-                                                  .buildAndExpand(createdItem.getCode())
-                                                  .toUri();
+                .path("/{code}")
+                .buildAndExpand(createdItem.getCode())
+                .toUri();
 
         return ResponseEntity.created(location).body(createdItem);
     }

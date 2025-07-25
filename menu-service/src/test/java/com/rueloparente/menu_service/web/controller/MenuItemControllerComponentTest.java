@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.jdbc.Sql;
 
 /**
@@ -19,7 +18,6 @@ import org.springframework.test.context.jdbc.Sql;
  * These tests start a real server and send HTTP requests to the endpoints.
  */
 @Sql("/test-data.sql")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class MenuItemControllerComponentTest extends AbstractIT {
 
     @Test
