@@ -1,0 +1,38 @@
+server:
+  port: 8989
+  shutdown: graceful
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+                    - id: menu-service-api
+                      uri: lb://menu-service
+                      predicates:
+                        - Path=/api/menu-items/**
+
+
+                    - id: menu-service-openapi
+                      uri: lb://menu-service
+                      predicates:
+                        - Path=/v3/api-docs/menu-service
+
+# --- Eureka Client Configuration ---
+eureka:
+  instance:
+    hostname: ${HOSTNAME:localhost}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+
+
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    urls:
+      - name: Menu Service
+        url: /v3/api-docs/menu-service

@@ -10,6 +10,7 @@ import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * REST controller for managing menu items.
@@ -31,8 +32,12 @@ public class MenuItemController {
     @PostMapping
     public ResponseEntity<MenuItemWeb> addMenuItem(@Valid @RequestBody AddMenuItem addMenuItem) {
         MenuItemWeb createdItem = menuItemService.addMenuItem(addMenuItem);
-        // Build a URI for the newly created resource to return in the Location header.
-        URI location = URI.create(String.format("/api/menu-items/%s", createdItem.getCode()));
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                                                  .path("/{code}")
+                                                  .buildAndExpand(createdItem.getCode())
+                                                  .toUri();
+
         return ResponseEntity.created(location).body(createdItem);
     }
 
